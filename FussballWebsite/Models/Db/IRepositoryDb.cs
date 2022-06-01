@@ -12,8 +12,9 @@ namespace FussballWebsite.Models.DB {
         Task<bool> Insert(User user);
         Task<bool> Delete(int user_id);
         Task<bool> ChangeUserData(int userID, User user);
-        Task<List<User>> GetAllUsers();
+        List<User> GetAllUsers();
         Task<User> GetUser(string user_id);
         Task<User> Login(String username, String password);
+        Task<bool> emailAvailable(string email);
     }
 }

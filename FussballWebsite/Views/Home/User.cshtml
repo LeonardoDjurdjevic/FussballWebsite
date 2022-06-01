@@ -17,57 +17,87 @@
         Model ... Instanz/ Objekt das an die View übergeben wurde
                     hier sind die Daten enthalten
     *@
+    @if (@Context.Session.GetInt32("role") != 2) {
+        @if (Model == null || Model.Count < 1) {
+            <p>
+                Keine Userdaten vorhanden
+            </p>
+        }
+        else {
 
-    @if (Model == null || Model.Count < 1) {
-        <p>
-            Keine Userdaten vorhanden
-        </p>
-    } else {
-
-        <table>
-            <thead>
-                <tr>
-                    <td colspan="5">User</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>UserID</td>
-                    <td>Username</td>
-                    <td>Email</td>
-                    <td>Birthdate</td>
-                    <td>Gender</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                @foreach (Fussball_Website.Models.User user in Model) { 
+            <table>
+                <thead>
                     <tr>
-                        <td>@user.UserID</td>
-                        <td>@user.Username</td>
-                        <td>@user.EMail</td>
-                        <td>@user.Birthdate.ToLongDateString()</td>
-                        <td>@user.Gender</td>
-                        <td>@user.Liga</td>
-                        <td>
-                            <form action="/user/delete/@user.UserID" method="get">
-                                <input type="submit" value="Löschen" />
-                            </form>
-                        </td>
-                        <td>
-                            <form action="/user/update/@user.UserID" method="get">
-                                <input type="submit" value="Ändern" />
-                            </form>
-                        </td>
+                        <td colspan="5">User</td>
                     </tr>
-                }
-            </tbody>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>UserID</td>
+                        <td>Username</td>
+                        <td>Email</td>
+                        <td>Birthdate</td>
+                        <td>Gender</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    @if (@Context.Session.GetInt32("role") == 1) {
+                        @foreach (Fussball_Website.Models.User user in Model) {
+                            <tr>
+                                <td>@user.UserID</td>
+                                <td>@user.Username</td>
+                                <td>@user.EMail</td>
+                                <td>@user.Birthdate.ToLongDateString()</td>
+                                <td>@user.Gender</td>
+                                <td>@user.Liga</td>
+                                <td>
+                                    <form action="/user/delete/@user.UserID" method="get">
+                                        <input type="submit" value="Löschen" />
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/user/update/@user.UserID" method="get">
+                                        <input type="submit" value="Ändern" />
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    @if (@Context.Session.GetInt32("role") == 0) {
+                        @foreach (Fussball_Website.Models.User user in Model) {
+                            @if (Context.Session.GetString("email") == user.EMail) { 
+                                <tr>
+                                    <td>@user.UserID</td>
+                                    <td>@user.Username</td>
+                                    <td>@user.EMail</td>
+                                    <td>@user.Birthdate.ToLongDateString()</td>
+                                    <td>@user.Gender</td>
+                                    <td>@user.Liga</td>
+                                    <td>
+                                        <form action="/user/delete/@user.UserID" method="get">
+                                            <input type="submit" value="Löschen" />
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="/user/update/@user.UserID" method="get">
+                                            <input type="submit" value="Ändern" />
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    }
+                </tbody>
 
-            <tfoot>
-                <tr>
-                    <td colspan="5">zur Aufbereitung der User</td>
-                </tr>
-            </tfoot>
-        </table>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">zur Aufbereitung der User</td>
+                    </tr>
+                </tfoot>
+            </table>
+        }
+    } else {
+        <p>Anmeldung ist notwendig für diese Funktion</p>
     }
 </div>
 

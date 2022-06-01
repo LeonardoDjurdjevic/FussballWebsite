@@ -7,7 +7,7 @@ body {
 }
 
 .headline {
-    padding: 15px 718px;
+    padding: 15px 718px;    
     display: inline-block;
     justify-content: center;
     color: #00452E;
@@ -19,12 +19,23 @@ body {
 .text {
     position: absolute;
     top: 150px;
-    left: 380px;
-    width: 800px;
-    height: 150px;
+    left: 900px;
+    width: 500px;
+    height: 170px;
     background: #d8f4ef;
     padding: 20px;
-    border-radius: 2%;
+    border-radius: 20px;
+}
+
+.geschichte {
+    position: absolute;
+    top: 350px;
+    left: 50px;
+    width: 800px;
+    height: 300px;
+    background: #d8f4ef;
+    padding: 20px;
+    border-radius: 20px;
 }
 
 
@@ -64,6 +75,26 @@ a:hover {
     top: 150px;
     left: 20px;
 }
+
+    .siu .btn {
+        position: absolute;
+        top: 0px;
+        left: 10px;
+        background-image: url("../Multimedia/Bilder/Ronaldo.jpeg");
+        background-size: cover;
+        padding: 200px 400px;
+        cursor: pointer;
+        border: none;
+    }
+
+        .siu .btn:hover {
+            background-color: black;
+        }
+
+        .siu .btn:focus {
+            border: none;
+            outline: none;
+        }
 
 table, td, th {
     color: white;
@@ -118,3 +149,4 @@ iframe {
     width: 1538px;
     height: 610px;
 }
+

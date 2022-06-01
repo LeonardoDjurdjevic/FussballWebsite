@@ -21,6 +21,7 @@ namespace Fussball_Website.Models {
         public DateTime Birthdate { get; set; }
         public Gender Gender { get; set; }
         public Liga Liga { get; set; }
+        public Role Role { get; set; }
 
     }
 

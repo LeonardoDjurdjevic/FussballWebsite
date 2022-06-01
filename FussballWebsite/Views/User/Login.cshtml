@@ -3,21 +3,24 @@
     ViewData["Title"] = "Login";
 }
 
-<h3>Login</h3>
+<link rel="stylesheet" href="~/css/Login.css" />
+<body>
+    <h1></h1>
 
-<form asp-controller="user" asp-action="login" method="post">
-    <p>
-        <label> Email </label><br />
-        <input type="text" asp-for="EMail" />
-        <span asp-validation-for="EMail"></span>
-    </p>
-    <p>
-        <label> Password </label><br />
-        <input type="password" asp-for="Password" />
-        <span asp-validation-for="Password"></span>
-    </p>
-    <p>
-        <input type="submit" value="absenden" />
-    </p>
-</form>
-
+    <form class="box" asp-controller="user" asp-action="login" method="post">
+        <h1>Login</h1>
+        <p>
+            <label> Email </label><br />
+            <input type="text" asp-for="EMail" />
+            <span asp-validation-for="EMail"></span>
+        </p>
+        <p>
+            <label> Password </label><br />
+            <input type="password" asp-for="Password" />
+            <span asp-validation-for="Password"></span>
+        </p>
+        <p>
+            <input type="submit" value="absenden" />
+        </p>
+    </form>
+</body>

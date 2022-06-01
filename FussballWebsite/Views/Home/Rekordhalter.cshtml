@@ -4,9 +4,9 @@
 @{
 }
 
-<div class="siu">
-    <img src="~/Multimedia/Bilder/Ronaldo.jpeg" alt="siu" width="750" height="400" />
-    <audio controls="controls" class="sound">
+<<div class="siu">
+    <button onclick="playAudio()" class="btn"></button>
+    <audio id="audio">
         <source src="~/Multimedia/Sounds/Siu.mp3" type="audio/mpeg" />
     </audio>
 
@@ -25,7 +25,7 @@
         <td>Meisten Spiele</td>
         <td class="anz">181</td>
     </tr>
-    <tr> 
+    <tr>
         <td>Meisten UCL Titel</td>
         <td class="anz">5</td>
     </tr>
@@ -42,7 +42,8 @@
 
 
 <script>
-    var playSound = function (soundFile) {
-        $("#sound").html("<embed src=\"" + soundFile + "\" hidden=\"true\" autostart=\"true\" />");
+    var audio = document.getElementById("audio");
+    function playAudio() {
+        audio.play();
     }
 </script>

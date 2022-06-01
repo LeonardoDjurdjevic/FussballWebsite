@@ -10,6 +10,7 @@ create table users(
 		birthdate date null,
 		gender int null,
 		liga int null,
+		role int null,
 		
 		constraint user_id_PK primary key (user_id)
 );

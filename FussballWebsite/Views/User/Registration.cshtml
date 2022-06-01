@@ -3,17 +3,18 @@
     ViewData["Title"] = "Registration";
 }
 
-<h1>Registration</h1>
+<link rel="stylesheet" href="~/css/Register.css" />
 
-<form asp-controller="user" asp-action="Registration" method="post">
-    <p>
+<form class="box" asp-controller="user" asp-action="Registration" method="post">
+    <h1>Registration</h1>
+    <p class="login">
         <label asp-for="Username">
             Benutzername
         </label>
         <input type="text" asp-for="Username" />
         <span asp-validation-for="Username"></span>
     </p>
-    <p>
+    <p class="login">
 
         <label asp-for="Password">
             Passwort
@@ -21,21 +22,21 @@
         <input type="password" asp-for="Password" />
         <span asp-validation-for="Password"></span>
     </p>
-    <p>
+    <p class="login">
         <label asp-for="EMail">
             EMail
         </label>
         <input type="email" asp-for="EMail" />
         <span asp-validation-for="EMail"></span>
     </p>
-    <p>
+    <p class="login">
         <label asp-for="Birthdate">
             Geburtsdatum
         </label>
         <input type="date" asp-for="Birthdate" />
         <span asp-validation-for="Birthdate"></span>
     </p>
-    <p>
+    <p class="login">
         <label asp-for="Gender">
             Geschlecht
         </label>
@@ -48,9 +49,9 @@
         </select>
         <span asp-validation-for="Gender"></span>
     </p>
-    <p>
+    <p class="login">
         <label asp-for="Liga">
-            Liga    
+            Liga
         </label>
         <select asp-for="Liga">
 
@@ -64,7 +65,7 @@
         </select>
         <span asp-validation-for="Liga"></span>
     </p>
-    <p>
+    <p class="login">
         <label>
             <input type="submit" value="absenden" />
             <input type="reset" value="abbrechen" />

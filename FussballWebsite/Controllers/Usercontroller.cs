@@ -17,13 +17,13 @@ namespace Fussball_Website.Controllers {
         public async Task<IActionResult> Index() {
             try {
                 await _rep.ConnectAsync();
-                return View(await _rep.GetAllUsers());
+                return View(_rep.GetAllUsers());
             } catch (DbException) {
                 return View("_Message", new Message("Datenbankfehler",
                                 "Die Benutzer konnten nicht gelanden werden",
                                 "Versuchen Sie es später erneut!"));
             } finally {
-                await _rep.DisconnectAsync();
+                await _rep.DisconnectAsync();   
             }
 
         }
@@ -81,7 +81,7 @@ namespace Fussball_Website.Controllers {
 
         }
 
-        private void ValitdateLogin(String username, String pw) {
+        private void ValidateLogin(String username, String pw) {
             if ((username == null) || (username.Trim().Length < 4)) {
                 ModelState.AddModelError("Username", "Email muss laenger sein");
             }
@@ -101,6 +101,7 @@ namespace Fussball_Website.Controllers {
             if (userDataFromForm == null) {
                 return RedirectToAction("Login");
             }
+            ValidateLogin(userDataFromForm.Username, userDataFromForm.Password);
             try {
                 await _rep.ConnectAsync();
                 if (await _rep.Login(userDataFromForm.EMail, userDataFromForm.Password) != null && !string.IsNullOrEmpty(userDataFromForm.EMail)) {
@@ -109,6 +110,8 @@ namespace Fussball_Website.Controllers {
                     HttpContext.Session.SetInt32("id", u.UserID);
                     int liga = Convert.ToInt32(u.Liga);
                     HttpContext.Session.SetInt32("liga", liga);
+                    int role = Convert.ToInt32(u.Role);
+                    HttpContext.Session.SetInt32("role", role);
                     HttpContext.Session.SetString("loggedIn", "true");
                     return View("_Message", new Message("Login", "User " + userDataFromForm.Username + 
                         " erfolgreich angemeldet!"));

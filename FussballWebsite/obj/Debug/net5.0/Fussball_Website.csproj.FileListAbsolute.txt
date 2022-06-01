@@ -2478,7 +2478,6 @@ C:\SWP\SWP-Vogt\FussballWebsite\FussballWebsite\obj\Debug\net5.0\ref\Fussball_We
 C:\SWP\SWP-Vogt\FussballWebsite\FussballWebsite\obj\Debug\net5.0\Fussball_Website.pdb
 C:\SWP\SWP-Vogt\FussballWebsite\FussballWebsite\obj\Debug\net5.0\Fussball_Website.genruntimeconfig.cache
 C:\SWP\SWP-Vogt\FussballWebsite\FussballWebsite\obj\Debug\net5.0\Razor\Views\Shared\Navigation2.cshtml.g.cs
-C:\SWP\SWP-Vogt\FussballWebsite\FussballWebsite\obj\Debug\net5.0\Razor\Views\Home\Ranking.cshtml.g.cs
 C:\SWP\SWP-Vogt\FussballWebsite\FussballWebsite\obj\Debug\net5.0\Razor\Views\Home\Rekordhalter.cshtml.g.cs
 C:\SWP\SWP-Vogt\FussballWebsite\FussballWebsite\obj\Debug\net5.0\Razor\Views\Home\User.cshtml.g.cs
 C:\SWP\SWP-Vogt\FussballWebsite\FussballWebsite\obj\Debug\net5.0\Razor\Views\Home\Tabelle.cshtml.g.cs
