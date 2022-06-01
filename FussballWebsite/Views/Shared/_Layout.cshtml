@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FirstWebApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    
+</head>
+<body>
+
+    <div id="container">
+        <header class="headline" href="/home/Index">
+            <a href="/home/Index">
+                <img src="~/Multimedia/Bilder/uefa-champions-league-logo-0.png" 
+                alt="CL" width="100" height="100" />
+            </a>
+        </header>
+        <main>
+            <div>
+                <nav>
+                    <partial name="Navigation" />
+                </nav>
+                    <nav>
+                        <partial name="Navigation2" />
+                    </nav>
+            </div>
+            <content>
+                @*hier wird die zugehörige View angezeigt*@
+                @RenderBody()
+            </content>
+
+        </main>
+        <footer>
+        </footer>
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

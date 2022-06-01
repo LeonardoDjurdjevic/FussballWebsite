@@ -1,0 +1,48 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div class="siu">
+    <img src="~/Multimedia/Bilder/Ronaldo.jpeg" alt="siu" width="750" height="400" />
+    <audio controls="controls" class="sound">
+        <source src="~/Multimedia/Sounds/Siu.mp3" type="audio/mpeg" />
+    </audio>
+
+</div>
+
+<table class="ronaldo" width="400px" height="40px">
+    <tr>
+        <th>Rekord</th>
+        <th class="anz">Anzahl</th>
+    </tr>
+    <tr>
+        <td>Meisten Tore</td>
+        <td class="anz">140</td>
+    </tr>
+    <tr>
+        <td>Meisten Spiele</td>
+        <td class="anz">181</td>
+    </tr>
+    <tr> 
+        <td>Meisten UCL Titel</td>
+        <td class="anz">5</td>
+    </tr>
+    <tr>
+        <td>Meisten Tore in einer Saison</td>
+        <td class="anz">17</td>
+    </tr>
+    <tr>
+        <td>Meisten Vorlagen</td>
+        <td class="anz">42</td>
+    </tr>
+
+</table>
+
+
+<script>
+    var playSound = function (soundFile) {
+        $("#sound").html("<embed src=\"" + soundFile + "\" hidden=\"true\" autostart=\"true\" />");
+    }
+</script>

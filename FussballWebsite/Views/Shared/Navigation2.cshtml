@@ -1,0 +1,18 @@
+﻿<ul class="nav nav2">
+    @if (Context.Session.GetString("loggedIn") == "false" || Context.Session.GetString("loggedIn") == null) {
+        <li>
+            <a class="nav-link text-dark" href="/User/Registration">Registration</a>
+        </li>
+        <li>
+            <a class="nav-link text-dark" href="/User/Login">Login</a>
+        </li>
+    }
+    @if (Context.Session.GetString("loggedIn") == "true") { 
+        <li>
+            <a class="nav-link text-dark" href="/User/Logout">Logout</a>
+        </li>
+    }
+        <li>
+            <a class="nav-link text-dark" href="/Home/User">User</a>
+        </li>
+</ul>

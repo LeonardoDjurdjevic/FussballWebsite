@@ -1,0 +1,23 @@
+﻿@model Fussball_Website.Models.User;
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h3>Login</h3>
+
+<form asp-controller="user" asp-action="login" method="post">
+    <p>
+        <label> Email </label><br />
+        <input type="text" asp-for="EMail" />
+        <span asp-validation-for="EMail"></span>
+    </p>
+    <p>
+        <label> Password </label><br />
+        <input type="password" asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </p>
+    <p>
+        <input type="submit" value="absenden" />
+    </p>
+</form>
+

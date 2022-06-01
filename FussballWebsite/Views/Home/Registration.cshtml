@@ -1,0 +1,59 @@
+﻿@model Fussball_Website.Models.User
+@{
+   ViewData["Title"] = "Registration";
+}
+
+<h3>Registration</h3>
+
+<form asp-controller="user" asp-action="Registration" method="post">
+    <h>
+        <label asp-for="Username">
+            
+            Benutzername:
+        </label> 
+        <input  type="text" asp-for="Username" /> 
+        <span asp-validation-for="Username"></span>
+    </h>
+    <h>
+
+        <label asp-for="Password">
+            Passwort:
+        </label> 
+        <input  type="password" asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </h>
+    <h>
+        <label asp-for="Email">
+            Email:
+        </label> 
+        <input  type="email" asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </h>
+    <h>
+        <label asp-for="Birthdate">
+            Geburtsdatum:
+        </label> 
+        <input  type="date" asp-for="Birthdate" />
+        <span asp-validation-for="Birthdate"></span>
+    </h>
+    <h>
+        <label asp-for="Gender">
+            Geschlecht:
+        </label> 
+        <select asp-for="Gender">
+
+            <option value="0">männlich</option>
+            <option value="1">weiblich</option>
+            <option value="2">nicht angegeben</option>
+
+        </select>
+        <span  asp-validation-for="Gender"></span>
+    </h>
+    <h>
+        <label> <br />
+            <input type="submit" value="absenden" />
+            <input type="reset" value="abbrechen" />
+                
+        </label>
+    </h>
+</form>  

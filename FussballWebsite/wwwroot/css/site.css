@@ -1,0 +1,120 @@
+﻿/*Startseite*/
+
+body {
+    position: absolute;
+    background: url("https://www.datocms-assets.com/15991/1579538579-screen-shot-2020-01-20-at-16-40-42-copy.png?auto=format") no-repeat center center fixed;
+    background-size: cover;
+}
+
+.headline {
+    padding: 15px 718px;
+    display: inline-block;
+    justify-content: center;
+    color: #00452E;
+    font-size: 30px;
+    font-family: Impact;
+    background: #b7ecea;
+}
+
+.text {
+    position: absolute;
+    top: 150px;
+    left: 380px;
+    width: 800px;
+    height: 150px;
+    background: #d8f4ef;
+    padding: 20px;
+    border-radius: 2%;
+}
+
+
+/*Navigation*/
+
+.nav {
+    position: absolute;
+    top: 15px;
+}
+
+.nav2 {
+    left: 1150px;
+}
+
+li {
+    margin: 25px 15px;
+    padding: 5px;
+}
+
+a {
+    color: black;
+}
+
+li:hover {
+    background-color: #97dee7;
+}
+
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+
+/*Rekordhalter/Ranking*/
+.siu {
+    position: absolute;
+    top: 150px;
+    left: 20px;
+}
+
+table, td, th {
+    color: white;
+    border: 2px solid white;
+    background: #3c2a69;
+    padding: 15px 20px;
+}
+
+.anz {
+    text-align: center;
+}
+
+.ronaldo {
+    position: absolute;
+    top: 150px;
+    left: 900px;
+}
+
+h1 {
+    color: #ffffff;
+    text-align: left;
+}
+
+p {
+    color:white;
+    text-align: left;
+}
+
+
+h2 {
+    margin-top: 38px;
+    color: white;
+    text-align: left;
+}
+
+h3 {
+    color: white;
+}
+
+.registration {
+    position: absolute;
+    top: 200px;
+}
+
+h {
+    color: white;
+}
+
+iframe {
+    position: absolute;
+    top: 130px;
+    width: 1538px;
+    height: 610px;
+}

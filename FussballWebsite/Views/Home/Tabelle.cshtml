@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Tabelle";
+}
+@switch (@Context.Session.GetInt32("liga")) {
+    case 0:
+        <iframe src="https://www.transfermarkt.at/premier-league/startseite/wettbewerb/GB1"></iframe>
+        break;
+    case 1:
+        <iframe src="https://www.transfermarkt.at/laliga/startseite/wettbewerb/ES1"></iframe>
+        break;
+    case 2:
+        <iframe src="https://www.transfermarkt.at/serie-a/startseite/wettbewerb/IT1"></iframe>
+        break;
+    case 3:
+        <iframe src="https://www.transfermarkt.at/bundesliga/startseite/wettbewerb/L1"></iframe>
+        break; 
+    case 4:
+        <iframe src="https://www.transfermarkt.at/ligue-1/startseite/wettbewerb/FR1"></iframe>
+        break;
+    default:
+        <p style="position: absolute; top: 500px; left: 500px; font-size: 40px;">Keine Liga angegeben oder nicht eingeloggt!</p>
+        break;
+}
+    

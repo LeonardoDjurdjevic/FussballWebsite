@@ -1,0 +1,73 @@
+﻿@*
+    model ... gibt den Datentyp an, der an die View übergeben wird
+*@
+
+@model List<Fussball_Website.Models.User>
+
+@{
+    ViewData["Title"] = "Index";
+
+}
+
+<h3>Index</h3>
+
+<div>
+
+    @*
+        Model ... Instanz/ Objekt das an die View übergeben wurde
+                    hier sind die Daten enthalten
+    *@
+
+    @if (Model == null || Model.Count < 1) {
+        <p>
+            Keine Userdaten vorhanden
+        </p>
+    } else {
+
+        <table>
+            <thead>
+                <tr>
+                    <td colspan="5">User</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>UserID</td>
+                    <td>Username</td>
+                    <td>Email</td>
+                    <td>Birthdate</td>
+                    <td>Gender</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                @foreach (Fussball_Website.Models.User user in Model) { 
+                    <tr>
+                        <td>@user.UserID</td>
+                        <td>@user.Username</td>
+                        <td>@user.EMail</td>
+                        <td>@user.Birthdate.ToLongDateString()</td>
+                        <td>@user.Gender</td>
+                        <td>@user.Liga</td>
+                        <td>
+                            <form action="/user/delete/@user.UserID" method="get">
+                                <input type="submit" value="Löschen" />
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/user/update/@user.UserID" method="get">
+                                <input type="submit" value="Ändern" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td colspan="5">zur Aufbereitung der User</td>
+                </tr>
+            </tfoot>
+        </table>
+    }
+</div>
+
