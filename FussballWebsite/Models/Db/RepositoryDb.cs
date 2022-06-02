@@ -105,7 +105,7 @@ namespace FussballWebsite.Models.DB {
         public async Task<bool> ChangeUserData(int userID, User user) {
             if (this.connection?.State == ConnectionState.Open) {
                 DbCommand cmd = this.connection.CreateCommand();
-                cmd.CommandText = "update users set username = @username, password = sha2(@password, 512), " +
+                cmd.CommandText = "update users set (username = @username, password = sha2(@password, 512), " +
                     "email = @email, birthdate = @birthdate, gender = @gender, liga = @liga) where user_id = @user_id";
                 DbParameter paramID = cmd.CreateParameter();
                 paramID.ParameterName = "user_id";

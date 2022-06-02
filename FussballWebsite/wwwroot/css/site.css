@@ -6,6 +6,7 @@ body {
     background-size: cover;
 }
 
+
 .headline {
     padding: 15px 718px;    
     display: inline-block;
@@ -13,15 +14,25 @@ body {
     color: #00452E;
     font-size: 30px;
     font-family: Impact;
+    background: #b7ecea;    
+}
+
+.headlineLila {
+    padding: 15px 718px;
+    display: inline-block;
+    justify-content: center;
+    color: darkorchid;
+    font-size: 30px;
+    font-family: Impact;
     background: #b7ecea;
 }
 
 .text {
     position: absolute;
-    top: 150px;
-    left: 900px;
+    top: 310px;
+    left: 500px;
     width: 500px;
-    height: 170px;
+    height: 450px;
     background: #d8f4ef;
     padding: 20px;
     border-radius: 20px;

@@ -17,7 +17,7 @@
         Model ... Instanz/ Objekt das an die View übergeben wurde
                     hier sind die Daten enthalten
     *@
-    @if (@Context.Session.GetInt32("role") != 2) {
+    @if (@Context.Session.GetInt32("role") != 2 || @Context.Session.GetString("loggedIn") != "false") {
         @if (Model == null || Model.Count < 1) {
             <p>
                 Keine Userdaten vorhanden

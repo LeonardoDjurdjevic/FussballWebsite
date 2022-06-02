@@ -1,0 +1,83 @@
+﻿@model Fussball_Website.Models.User
+@{
+    ViewData["Title"] = "Update";
+}
+
+<link rel="stylesheet" href="~/css/Register.css" />
+
+<form class="box" asp-controller="user" asp-action="Update" method="post">
+    <input type="hidden" asp-for="UserID" />
+    <h1>Benutzer ändern</h1>
+    <p class="login">
+        <label asp-for="Username">
+            Benutzername
+        </label>
+        <input type="text" asp-for="Username" />
+        <span asp-validation-for="Username"></span>
+    </p>
+    <p class="login">
+
+        <label asp-for="Password">
+            Passwort
+        </label>
+        <input type="password" asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+    </p>
+    <p class="login">
+        <label asp-for="EMail">
+            EMail
+        </label>
+        <input type="email" asp-for="EMail" />
+        <span asp-validation-for="EMail"></span>
+    </p>
+    <p class="login">
+        <label asp-for="Birthdate">
+            Geburtsdatum
+        </label>
+        <input type="date" asp-for="Birthdate" />
+        <span asp-validation-for="Birthdate"></span>
+    </p>
+    <p class="login">
+        <label asp-for="Gender">
+            Geschlecht
+        </label>
+        <select asp-for="Gender">
+
+            <option value="0">männlich</option>
+            <option value="1">weiblich</option>
+            <option value="2" selected>nicht angegeben</option>
+
+        </select>
+        <span asp-validation-for="Gender"></span>
+    </p>
+    <p class="login">
+        <label asp-for="Liga">
+            Liga
+        </label>
+        <select asp-for="Liga">
+
+            <option value="0">Premier League</option>
+            <option value="1">Laliga Santander</option>
+            <option value="2">Serie A Tim</option>
+            <option value="3">Bundesliga</option>
+            <option value="4">Ligue 1</option>
+            <option value="5" selected>nicht angegeben</option>
+
+        </select>
+        <span asp-validation-for="Liga"></span>
+    </p>
+    @if(@Context.Session.GetInt32("role") == 1) {
+        <p>
+            <select asp-for="Role">
+                <option value="0">User</option>
+                <option value="1">Admin</option>
+            </select>
+        </p>
+    }
+    <p class="login">
+        <label>
+            <input type="submit" value="absenden" />
+            <input type="reset" value="abbrechen" />
+        </label>
+    </p>
+</form>

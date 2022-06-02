@@ -13,10 +13,12 @@ namespace Fussball_Website.Controllers {
 
         private IRepositoryDb _rep = new RepositoryDb();
 
-
         public async Task<IActionResult> Index() {
             try {
                 await _rep.ConnectAsync();
+                if(HttpContext.Session.GetString("loggedIn") == "false") {
+                    HttpContext.Session.SetInt32("role", 2);
+                }
                 return View(_rep.GetAllUsers());
             } catch (DbException) {
                 return View("_Message", new Message("Datenbankfehler",
@@ -107,12 +109,14 @@ namespace Fussball_Website.Controllers {
                 if (await _rep.Login(userDataFromForm.EMail, userDataFromForm.Password) != null && !string.IsNullOrEmpty(userDataFromForm.EMail)) {
                     User u = await _rep.GetUser(userDataFromForm.EMail);
                     HttpContext.Session.SetString("username", u.Username);
+                    HttpContext.Session.SetString("email", u.EMail);
                     HttpContext.Session.SetInt32("id", u.UserID);
                     int liga = Convert.ToInt32(u.Liga);
                     HttpContext.Session.SetInt32("liga", liga);
                     int role = Convert.ToInt32(u.Role);
                     HttpContext.Session.SetInt32("role", role);
                     HttpContext.Session.SetString("loggedIn", "true");
+                    HttpContext.Session.SetInt32("farbe", 0);
                     return View("_Message", new Message("Login", "User " + userDataFromForm.Username + 
                         " erfolgreich angemeldet!"));
                 }
@@ -135,6 +139,7 @@ namespace Fussball_Website.Controllers {
             try {
                 await _rep.ConnectAsync();
                 await _rep.Delete(id);
+                Logout();
                 return RedirectToAction("Index");
             }
             catch (DbException) {
