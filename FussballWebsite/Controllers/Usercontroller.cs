@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -117,6 +118,7 @@ namespace Fussball_Website.Controllers {
                     HttpContext.Session.SetInt32("role", role);
                     HttpContext.Session.SetString("loggedIn", "true");
                     HttpContext.Session.SetInt32("farbe", 0);
+                    HttpContext.Session.SetString("profilpicture", u.Profilpicture);
                     return View("_Message", new Message("Login", "User " + userDataFromForm.Username + 
                         " erfolgreich angemeldet!"));
                 }
@@ -151,16 +153,75 @@ namespace Fussball_Website.Controllers {
         }
 
         [HttpGet]
-        public IActionResult Update() {
+        public async Task<IActionResult> Update(int userID) {
+
+            try {
+                await _rep.ConnectAsync();
+
+                return View(await _rep.GetUser(userID.ToString()));
+            }
+            catch (DbException) {
+                return View("_Message", new Message("Datenbankfehler", "Der User konnten nicht geladen werdne",
+                    "Versuchen sie es später erneut"));
+            }
+            finally {
+                await _rep.DisconnectAsync();
+            }
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Update(User user, int id) {
+        public async Task<IActionResult> Update(User user) {
+            if (ModelState.IsValid) {
+                try {
+                    await _rep.ConnectAsync();
+                    if (await _rep.ChangeUserData(user)) {
+
+                        return View("_Message",
+                            new Message("Update", "Ihre Daten wurden erfolgreich geupdatet"));
+                    }
+                    else {
+                        return View("_Message",
+                            new Message("Update", "Ihre Daten konnten NICHT geupdatet werden!",
+                                        "Bitte versuchen Sie es später erneut!"));
+                    }
+                }
+                catch (DbException) {
+                    return View("_Message",
+                        new Message("Update", "Datenbankfehler!",
+                                    "Bitte veruschen sie es später erneut!"));
+                }
+                finally {
+                    await _rep.DisconnectAsync();
+                }
+
+            }
+            return View(user);
+        }
+
+        public async Task<IActionResult> UploadFile(IFormFile file) {
             try {
                 await _rep.ConnectAsync();
-                await _rep.ChangeUserData(id, user);
-                return RedirectToAction("Index");
+                if (file == null || file.Length == 0)
+                    return View("_Message", new Message("File Error!", "Datei konnte nicht gelesen werden!"));
+                if (file.Length > 1024 * 1024) {
+                    return View("_Message", new Message("File Error!", "File ist zu groß."));
+                }
+                string path = "./wwwroot/images/" + HttpContext.Session.GetString("username");
+                string fullpath = Path.Combine(path, Path.GetFileName(file.FileName));
+                if (!Directory.Exists(path)) {
+                    Directory.CreateDirectory(path);
+                }
+                DirectoryInfo dir = new DirectoryInfo(path);
+                foreach (FileInfo fi in dir.GetFiles()) {
+                    fi.Delete();
+                }
+                using (FileStream stream = new FileStream(fullpath, FileMode.Create)) {
+                    await file.CopyToAsync(stream);
+                }
+                await _rep.ChangeUserPicture(HttpContext.Session.GetInt32("id").GetValueOrDefault(), fullpath.Split("/wwwroot")[1]);
+                HttpContext.Session.SetString("profilpicture", fullpath.Split("/wwwroot")[1]);
+                return RedirectToAction("user", "home");
             }
             catch (DbException) {
                 return View("_Message", new Message("Datenbankfehler!", "Der Benutzer konnte nicht geändert werden! Versuchen sie es später erneut."));

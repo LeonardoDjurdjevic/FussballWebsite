@@ -65,7 +65,7 @@
                     }
                     @if (@Context.Session.GetInt32("role") == 0) {
                         @foreach (Fussball_Website.Models.User user in Model) {
-                            @if (Context.Session.GetString("email") == user.EMail) { 
+                            @if (Context.Session.GetString("email") == user.EMail) {
                                 <tr>
                                     <td>@user.UserID</td>
                                     <td>@user.Username</td>
@@ -95,8 +95,13 @@
                     </tr>
                 </tfoot>
             </table>
+            <form asp-controller="user" asp-action="UploadFile" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" />
+                <button type="submit">Upload File</button>
+            </form>
         }
-    } else {
+    }
+    else {
         <p>Anmeldung ist notwendig für diese Funktion</p>
     }
 </div>

@@ -229,3 +229,181 @@ korper {
     justify-content: center;
     flex-direction: column;
 }
+
+#google_translate_element {
+    margin-top: 20px;
+    margin-right: 30px;
+}
+
+.goog-logo-link {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    color: transparent !important;
+}
+
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+.goog-tooltip {
+    display: none !important;
+}
+
+    .goog-tooltip:hover {
+        display: none !important;
+    }
+
+.goog-text-highlight {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+/* Login */
+
+.box-login {
+    width: 400px;
+    padding: 40px;
+    position: absolute;
+    left: 50%;
+    top: 300%;
+    transform: translate(-50%,-50%);
+    background: #191919;
+    opacity: 0.9;
+    text-align: center;
+}
+
+    .box-login h1 {
+        color: white;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    .box-login input[type = "text"], .box-login input[type = "password"] {
+        border: 0;
+        background: none;
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+        border: 2px solid #3498db;
+        padding: 14px 10px;
+        width: 200px;
+        outline: none;
+        color: white;
+        border-radius: 24px;
+        transition: 0.25s;
+    }
+
+        .box-login input[type = "text"]:focus, .box-login input[type = "password"]:focus {
+            width: 280px;
+            border-color: #2ecc71;
+        }
+
+    .box-login input[type = "submit"] {
+        border: 0;
+        background: none;
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+        border: 2px solid #2ecc71;
+        padding: 14px 40px;
+        outline: none;
+        color: white;
+        border-radius: 24px;
+        transition: 0.25s;
+        cursor: pointer;
+    }
+
+        .box-login input[type = "submit"]:hover {
+            background: #2ecc71;
+        }
+
+
+/* Register */
+
+.box-register {
+    width: 400px;
+    padding: 40px;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%,-50%);
+    background: #191919;
+    opacity: 0.9;
+    text-align: center;
+}
+
+    .box-register h1 {
+        color: white;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    .box-register input[type = "text"], .box-register input[type = "password"], .box-register input[type="email"], .box-register input[type="date"] {
+        border: 0;
+        background: none;
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+        border: 2px solid #3498db;
+        padding: 14px 10px;
+        width: 200px;
+        outline: none;
+        color: white;
+        border-radius: 24px;
+        transition: 0.25s;
+    }
+
+    .box-register select {
+        border: 0;
+        background: none;
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+        border: 2px solid #3498db;
+        padding: 14px 10px;
+        width: 200px;
+        outline: none;
+        color: white;
+        border-radius: 24px;
+        transition: 0.25s;
+    }
+
+        .box-register select:focus,
+        .box-register select:hover {
+            background: #191919;
+            outline: none;
+            border: 1px solid #bbbbbb;
+        }
+
+    .box-register input[type = "text"]:focus, .box-register input[type = "password"]:focus, .box-register input[type="email"]:focus, .box-register input[type="date"]:focus {
+        width: 280px;
+        border-color: #2ecc71;
+    }
+
+    .box-register input[type = "submit"], .box-register input[type = "reset"] {
+        border: 0;
+        background: none;
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+        border: 2px solid #2ecc71;
+        padding: 14px 40px;
+        outline: none;
+        color: white;
+        border-radius: 24px;
+        transition: 0.25s;
+        cursor: pointer;
+    }
+
+        .box-register input[type = "submit"]:hover, .box-register input[type = "reset"] {
+            background: #2ecc71;
+        }

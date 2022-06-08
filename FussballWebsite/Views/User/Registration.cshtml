@@ -3,9 +3,9 @@
     ViewData["Title"] = "Registration";
 }
 
-<link rel="stylesheet" href="~/css/Register.css" />
+<link rel="stylesheet" href="~/css/home.css" />
 
-<form class="box" asp-controller="user" asp-action="Registration" method="post">
+<form class="box-register" asp-controller="user" asp-action="Registration" method="post">
     <h1>Registration</h1>
     <p class="login">
         <label asp-for="Username">
@@ -24,7 +24,7 @@
     </p>
     <p class="login">
         <label asp-for="EMail">
-            EMail
+            Email
         </label>
         <input type="email" asp-for="EMail" />
         <span asp-validation-for="EMail"></span>

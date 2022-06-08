@@ -1,10 +1,4 @@
-﻿body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-}
-
-.box {
+﻿.box-register {
     width: 400px;
     padding: 40px;
     position: absolute;
@@ -16,13 +10,13 @@
     text-align: center;
 }
 
-    .box h1 {
+    .box-register h1 {
         color: white;
         text-transform: uppercase;
         font-weight: 500;
     }
 
-    .box input[type = "text"], .box input[type = "password"], .box input[type="email"], .box input[type="date"] {
+    .box-register input[type = "text"], .box-register input[type = "password"], .box-register input[type="email"], .box-register input[type="date"] {
         border: 0;
         background: none;
         display: block;
@@ -37,7 +31,7 @@
         transition: 0.25s;
     }
 
-    .box select {
+    .box-register select {
         border: 0;
         background: none;
         display: block;
@@ -51,19 +45,19 @@
         border-radius: 24px;
         transition: 0.25s;
     }
-        .box select:focus,
-        .box select:hover {
+        .box-register select:focus,
+        .box-register select:hover {
             background: #191919;
             outline: none;
             border: 1px solid #bbbbbb;
         }
 
-        .box input[type = "text"]:focus, .box input[type = "password"]:focus, .box input[type="email"]:focus, .box input[type="date"]:focus {
+        .box-register input[type = "text"]:focus, .box-register input[type = "password"]:focus, .box-register input[type="email"]:focus, .box-register input[type="date"]:focus {
             width: 280px;
             border-color: #2ecc71;
         }
 
-    .box input[type = "submit"], .box input[type = "reset"] {
+    .box-register input[type = "submit"], .box-register input[type = "reset"] {
         border: 0;
         background: none;
         display: block;
@@ -78,6 +72,6 @@
         cursor: pointer;
     }
 
-        .box input[type = "submit"]:hover, .box input[type = "reset"] {
+        .box-register input[type = "submit"]:hover, .box-register input[type = "reset"] {
             background: #2ecc71;
         }

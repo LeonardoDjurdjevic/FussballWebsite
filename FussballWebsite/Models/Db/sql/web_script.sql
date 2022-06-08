@@ -8,6 +8,7 @@ create table users(
 		password varchar(300) not null,
 		email varchar(150) null,
 		birthdate date null,
+		profilpicture varchar(100) null,
 		gender int null,
 		liga int null,
 		role int null,

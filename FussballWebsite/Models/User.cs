@@ -19,6 +19,7 @@ namespace Fussball_Website.Models {
         public string Password { get; set; }
         public string EMail { get; set; }
         public DateTime Birthdate { get; set; }
+        public string Profilpicture { get; set; }
         public Gender Gender { get; set; }
         public Liga Liga { get; set; }
         public Role Role { get; set; }

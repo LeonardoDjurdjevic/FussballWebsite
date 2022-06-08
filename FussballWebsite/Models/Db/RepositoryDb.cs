@@ -32,7 +32,7 @@ namespace FussballWebsite.Models.DB {
         public async Task<bool> Insert(User user) {
             if (this.connection?.State == ConnectionState.Open) {
                 DbCommand cmd = this.connection.CreateCommand();
-                cmd.CommandText = "insert into users values(null, @username, sha2(@password, 512), @email, @birthdate, @gender, @liga, @role)";
+                cmd.CommandText = "insert into users values(null, @username, sha2(@password, 512), @email, @birthdate, @profilpicture, @gender, @liga, @role)";
                 DbParameter paramUN = cmd.CreateParameter();
                 paramUN.ParameterName = "username";
                 paramUN.DbType = System.Data.DbType.String;
@@ -52,6 +52,11 @@ namespace FussballWebsite.Models.DB {
                 paramBD.ParameterName = "birthdate";
                 paramBD.DbType = System.Data.DbType.Date;
                 paramBD.Value = user.Birthdate;
+
+                DbParameter paramImage = cmd.CreateParameter();
+                paramImage.ParameterName = "profilpicture";
+                paramImage.DbType = System.Data.DbType.String;
+                paramImage.Value = "";
 
                 DbParameter paramGender = cmd.CreateParameter();
                 paramGender.ParameterName = "gender";
@@ -77,6 +82,7 @@ namespace FussballWebsite.Models.DB {
                 cmd.Parameters.Add(paramPW);
                 cmd.Parameters.Add(paramEmail);
                 cmd.Parameters.Add(paramBD);
+                cmd.Parameters.Add(paramImage);
                 cmd.Parameters.Add(paramGender);
                 cmd.Parameters.Add(paramLiga);
                 cmd.Parameters.Add(paramRole);
@@ -102,11 +108,11 @@ namespace FussballWebsite.Models.DB {
             return false;
         }
 
-        public async Task<bool> ChangeUserData(int userID, User user) {
+        public async Task<bool> ChangeUserData(User user) {
             if (this.connection?.State == ConnectionState.Open) {
                 DbCommand cmd = this.connection.CreateCommand();
                 cmd.CommandText = "update users set (username = @username, password = sha2(@password, 512), " +
-                    "email = @email, birthdate = @birthdate, gender = @gender, liga = @liga) where user_id = @user_id";
+                    "email = @email, birthdate = @birthdate, gender = @gender, liga = @liga, role = @role) where user_id = @user_id";
                 DbParameter paramID = cmd.CreateParameter();
                 paramID.ParameterName = "user_id";
                 paramID.DbType = System.Data.DbType.Int32;
@@ -145,7 +151,7 @@ namespace FussballWebsite.Models.DB {
                 DbParameter paramRole = cmd.CreateParameter();
                 paramRole.ParameterName = "role";
                 paramRole.DbType = System.Data.DbType.Int32;
-                paramRole.Value = user.Liga;
+                paramRole.Value = 0;
 
                 cmd.Parameters.Add(paramID);
                 cmd.Parameters.Add(paramUN);
@@ -174,6 +180,7 @@ namespace FussballWebsite.Models.DB {
                             Password = Convert.ToString(reader["password"]),
                             EMail = Convert.ToString(reader["email"]),
                             Birthdate = Convert.ToDateTime(reader["birthdate"]),
+                            Profilpicture = Convert.ToString(reader["profilpicture"]),
                             Gender = (Gender)Convert.ToInt32(reader["gender"]),
                             Liga = (Liga)Convert.ToInt32(reader["liga"]),
                             Role = (Role)Convert.ToInt32(reader["role"])
@@ -213,6 +220,7 @@ namespace FussballWebsite.Models.DB {
                             Password = Convert.ToString(reader["password"]),
                             EMail = Convert.ToString(reader["email"]),
                             Birthdate = Convert.ToDateTime(reader["birthdate"]),
+                            Profilpicture = Convert.ToString(reader["profilpicture"]),
                             Gender = (Gender)Convert.ToInt32(reader["gender"]),
                             Liga = (Liga)Convert.ToInt32(reader["liga"]),
                             Role = (Role)Convert.ToInt32(reader["role"])
@@ -280,6 +288,30 @@ namespace FussballWebsite.Models.DB {
             }
             return false;
         }
+
+        public async Task<bool> ChangeUserPicture(int userID, string image) {
+            if (this.connection?.State == System.Data.ConnectionState.Open) {
+                DbCommand cmd = this.connection.CreateCommand();
+                cmd.CommandText = "update users set profilpicture = @profilpicture where user_id = @user_id";
+
+                DbParameter paramPP = cmd.CreateParameter();
+                paramPP.ParameterName = "profilpicture";
+                paramPP.DbType = System.Data.DbType.String;
+                paramPP.Value = image;
+
+                DbParameter paramID = cmd.CreateParameter();
+                paramID.ParameterName = "user_id";
+                paramID.DbType = System.Data.DbType.Int32;
+                paramID.Value = userID;
+
+                cmd.Parameters.Add(paramPP);
+                cmd.Parameters.Add(paramID);
+
+                return await cmd.ExecuteNonQueryAsync() == 1;
+            }
+            return false;
+        }
+
 
     }
 }
